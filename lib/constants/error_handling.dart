@@ -12,9 +12,11 @@ void httpErrorHandle({
   switch (response.statusCode) {
     case 200:
       onSuccess();
+
       break;
     case 400:
-      showSnackBar(context, jsonDecode(response.body)['msg']);
+      showSnackBar(context, jsonDecode(response.body)["msg"]);
+      print(response.body);
       break;
     case 500:
       showSnackBar(context, jsonDecode(response.body)['error']);
