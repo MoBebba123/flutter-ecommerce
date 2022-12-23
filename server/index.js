@@ -20,7 +20,7 @@ app.use(userRouter);
 
 connectDatabase();
 
-app.listen(PORT, "0.0.0.0",()=>{
+app.listen(PORT,()=>{
     console.log(`server is running on port ${PORT}`)
 })
 

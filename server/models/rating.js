@@ -9,6 +9,6 @@ const ratingSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
-});
+},  { timestamps: true });
 
 module.exports = ratingSchema;

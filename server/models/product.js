@@ -31,7 +31,7 @@ const productSchema = mongoose.Schema({
     required: true,
   },
   ratings: [ratingSchema],
-});
+} , { timestamps: true });
 
 const Product = mongoose.model("Product", productSchema);
 module.exports = { Product, productSchema };
