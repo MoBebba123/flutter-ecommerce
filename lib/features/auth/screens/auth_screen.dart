@@ -1,3 +1,5 @@
+import 'package:ecommerce/common/widgets/custom_button.dart';
+import 'package:ecommerce/common/widgets/custom_textfield.dart';
 import 'package:ecommerce/constants/global_variables.dart';
 import 'package:flutter/material.dart';
 
@@ -14,11 +16,14 @@ class AuthScreen extends StatefulWidget {
 class _AuthScreenState extends State<AuthScreen> {
   Auth _auth = Auth.signup;
   final _signUpFormKey = GlobalKey<FormState>();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: GlobalVariables.backgroundColor,
+      backgroundColor: GlobalVariables.greyBackgroundCOlor,
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -29,6 +34,9 @@ class _AuthScreenState extends State<AuthScreen> {
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
             ),
             ListTile(
+              tileColor: _auth == Auth.signup
+                  ? GlobalVariables.backgroundColor
+                  : GlobalVariables.greyBackgroundCOlor,
               title: const Text("create account"),
               leading: Radio(
                 value: Auth.signup,
@@ -42,11 +50,43 @@ class _AuthScreenState extends State<AuthScreen> {
               ),
             ),
             if (_auth == Auth.signup)
-              Form(
-                key: _signUpFormKey,
-                child: Column(),
+              Container(
+                padding: const EdgeInsets.all(8.0),
+                color: GlobalVariables.backgroundColor,
+                child: Form(
+                  key: _signUpFormKey,
+                  child: Column(
+                    children: [
+                      CustomTextfield(
+                          controller: _emailController,
+                          hintText: "email",
+                          obscureText: false),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      CustomTextfield(
+                          controller: _nameController,
+                          hintText: "name",
+                          obscureText: false),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      CustomTextfield(
+                          controller: _passwordController,
+                          hintText: "password",
+                          obscureText: true),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      CustomButton(text: "sign up", onTap: () {})
+                    ],
+                  ),
+                ),
               ),
             ListTile(
+              tileColor: _auth == Auth.signin
+                  ? GlobalVariables.backgroundColor
+                  : GlobalVariables.greyBackgroundCOlor,
               title: const Text("sign in"),
               leading: Radio(
                 value: Auth.signin,
@@ -58,7 +98,34 @@ class _AuthScreenState extends State<AuthScreen> {
                   });
                 },
               ),
-            )
+            ),
+            if (_auth == Auth.signin)
+              Container(
+                color: GlobalVariables.backgroundColor,
+                padding: const EdgeInsets.all(8.0),
+                child: Form(
+                  key: _signUpFormKey,
+                  child: Column(
+                    children: [
+                      CustomTextfield(
+                          controller: _emailController,
+                          hintText: "email ",
+                          obscureText: false),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      CustomTextfield(
+                          controller: _passwordController,
+                          hintText: "password ",
+                          obscureText: true),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      CustomButton(text: "sign in", onTap: () {})
+                    ],
+                  ),
+                ),
+              ),
           ],
         ),
       )),
