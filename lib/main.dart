@@ -1,3 +1,4 @@
+import 'package:ecommerce/common/widgets/bottom_bar.dart';
 import 'package:ecommerce/constants/global_variables.dart';
 import 'package:ecommerce/features/auth/screens/auth_screen.dart';
 import 'package:ecommerce/features/auth/services/auth_service.dart';
@@ -32,6 +33,8 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    var token = Provider.of<UserProvider>(context).user.token.isEmpty;
+    print(token);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'amazon',
@@ -44,7 +47,7 @@ class _MyAppState extends State<MyApp> {
       onGenerateRoute: (settings) => generateRoute(settings),
       home: Provider.of<UserProvider>(context).user.token.isEmpty
           ? const AuthScreen()
-          : const HomeScreen(),
+          : const BottomBar(),
     );
   }
 }

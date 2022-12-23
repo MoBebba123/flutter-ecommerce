@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:ecommerce/common/widgets/bottom_bar.dart';
 import 'package:ecommerce/constants/error_handling.dart';
 import 'package:ecommerce/constants/global_variables.dart';
 import 'package:ecommerce/constants/utils.dart';
@@ -71,7 +72,7 @@ class AuthService {
 
           // ignore: use_build_context_synchronously
           Navigator.pushNamedAndRemoveUntil(
-              context, HomeScreen.routeName, (route) => false);
+              context, BottomBar.routeName, (route) => false);
         },
       );
     } catch (e) {
