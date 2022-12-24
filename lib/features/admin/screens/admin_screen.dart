@@ -1,6 +1,7 @@
 import 'package:badges/badges.dart';
 import 'package:ecommerce/constants/global_variables.dart';
 import 'package:ecommerce/features/account/screens/account_screen.dart';
+import 'package:ecommerce/features/admin/screens/post_screen.dart';
 import 'package:ecommerce/home/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -16,9 +17,7 @@ class _AdminScreenState extends State<AdminScreen> {
   double bottomBarWith = 42;
   double bottomBarBorderWith = 5;
   List<Widget> pages = [
-    const Center(
-      child: Text("post page"),
-    ),
+    const PostScreen(),
     const Center(
       child: Text("analytics page"),
     ),
