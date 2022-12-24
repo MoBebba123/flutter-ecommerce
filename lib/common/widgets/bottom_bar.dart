@@ -1,5 +1,6 @@
 import 'package:badges/badges.dart';
 import 'package:ecommerce/constants/global_variables.dart';
+import 'package:ecommerce/features/account/screens/account_screen.dart';
 import 'package:ecommerce/home/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -17,9 +18,7 @@ class _BottomBarState extends State<BottomBar> {
   double bottomBarBorderWith = 5;
   List<Widget> pages = [
     const HomeScreen(),
-    const Center(
-      child: Text("account page"),
-    ),
+    const AccountScreen(),
     const Center(
       child: Text("cart page"),
     ),

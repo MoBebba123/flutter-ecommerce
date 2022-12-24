@@ -7,7 +7,7 @@ class User {
   final String password;
   final String address;
   final String type;
-  final String token;
+  late final String token;
   final List<dynamic> cart;
 
   User({

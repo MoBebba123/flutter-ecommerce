@@ -13,8 +13,14 @@ class UserProvider extends ChangeNotifier {
     cart: [],
   );
   User get user => _user;
+  String get token => _user.token;
   void setUser(String user) {
     _user = User.fromJson(user);
+    notifyListeners();
+  }
+
+  void setToken(String token) {
+    _user.token = token;
     notifyListeners();
   }
 }

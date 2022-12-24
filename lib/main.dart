@@ -2,7 +2,6 @@ import 'package:ecommerce/common/widgets/bottom_bar.dart';
 import 'package:ecommerce/constants/global_variables.dart';
 import 'package:ecommerce/features/auth/screens/auth_screen.dart';
 import 'package:ecommerce/features/auth/services/auth_service.dart';
-import 'package:ecommerce/home/screens/home_screen.dart';
 import 'package:ecommerce/providers/user_provider.dart';
 import 'package:ecommerce/route.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +25,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     authService.getUserDate(context: context);
   }
