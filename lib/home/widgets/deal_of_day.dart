@@ -70,6 +70,18 @@ class _DealOfDayState extends State<DealOfDay> {
             }).toList(),
           ),
         ),
+        Container(
+          padding: const EdgeInsets.symmetric(
+            vertical: 15,
+          ).copyWith(left: 15),
+          alignment: Alignment.topLeft,
+          child: Text(
+            'See all deals',
+            style: TextStyle(
+              color: Colors.cyan[800],
+            ),
+          ),
+        ),
       ],
     );
   }

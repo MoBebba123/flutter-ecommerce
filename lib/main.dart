@@ -1,5 +1,6 @@
 import 'package:ecommerce/common/widgets/bottom_bar.dart';
 import 'package:ecommerce/constants/global_variables.dart';
+import 'package:ecommerce/features/admin/screens/admin_screen.dart';
 import 'package:ecommerce/features/auth/screens/auth_screen.dart';
 import 'package:ecommerce/features/auth/services/auth_service.dart';
 import 'package:ecommerce/providers/user_provider.dart';
@@ -31,8 +32,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    var token = Provider.of<UserProvider>(context).user.token.isEmpty;
-    print(token);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'amazon',
@@ -43,9 +42,11 @@ class _MyAppState extends State<MyApp> {
           appBarTheme: const AppBarTheme(
               elevation: 0, iconTheme: IconThemeData(color: Colors.black))),
       onGenerateRoute: (settings) => generateRoute(settings),
-      home: Provider.of<UserProvider>(context).user.token.isEmpty
-          ? const AuthScreen()
-          : const BottomBar(),
+      home: Provider.of<UserProvider>(context).user.token.isEmpty == false
+          ? Provider.of<UserProvider>(context).user.type == "user"
+              ? const BottomBar()
+              : const AdminScreen()
+          : const AuthScreen(),
     );
   }
 }
