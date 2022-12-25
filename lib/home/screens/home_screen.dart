@@ -1,4 +1,5 @@
 import 'package:ecommerce/constants/global_variables.dart';
+import 'package:ecommerce/features/search/screens/search_screen.dart';
 import 'package:ecommerce/home/widgets/address_box.dart';
 import 'package:ecommerce/home/widgets/carousel_image.dart';
 import 'package:ecommerce/home/widgets/deal_of_day.dart';
@@ -14,6 +15,18 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final TextEditingController _queryController = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    _queryController.dispose();
+  }
+
+  void navigateToSearchScreen(String query) {
+    Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,9 +51,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderRadius: BorderRadius.circular(7),
                       elevation: 1,
                       child: TextFormField(
+                        onFieldSubmitted: (value) =>
+                            navigateToSearchScreen(value),
+                        initialValue: _queryController.text,
+                        onChanged: (value) {
+                          setState(() {
+                            _queryController.text = value;
+                          });
+                        },
                         decoration: InputDecoration(
                           prefixIcon: InkWell(
-                            onTap: () {},
+                            onTap: () =>
+                                navigateToSearchScreen(_queryController.text),
                             child: const Padding(
                               padding: EdgeInsets.only(
                                 left: 6,

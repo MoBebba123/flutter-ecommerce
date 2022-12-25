@@ -16,10 +16,23 @@ productRouter.get("/api/products/", auth, async (req, res) => {
 // /api/products/search/i
 productRouter.get("/api/products/search/:name", auth, async (req, res) => {
   try {
-    const products = await Product.find({
-      name: { $regex: req.params.name, $options: "i" },
-    });
 
+
+    const   products = await Product.find({
+        name: { $regex: req.params.name, $options: "i" },
+      });
+    
+    res.json(products);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+productRouter.get("/api/products/search/", auth, async (req, res) => {
+  try {
+
+
+    const  products = await Product.find({});
+    
     res.json(products);
   } catch (e) {
     res.status(500).json({ error: e.message });
