@@ -20,11 +20,11 @@ class _PostScreenState extends State<PostScreen> {
   void initState() {
     super.initState();
     fetchAllProducts();
+    setState(() {});
   }
 
   void fetchAllProducts() async {
     products = await adminServices.fetchAllProducts(context);
-    setState(() {});
   }
 
   void deleteProduct(Product product, int index) {
